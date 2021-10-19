@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+  
+  <div id="app">
+    <p>現在{{number}}クリックされています</p>
+    <button v-on:click="countUp(2)">カウントアップ</button>
+    <p>{{lessThan}}</p>
+    <p>{{lessThanMethod()}}</p>
+    <p v-on:mousemove="changeMP(3, $event)">マウスを乗せてください
+    <span v-on:mousemove.stop>反応しない</span></p>
+    <p>X:{{x}}, Y: {{y}}</p>
+    <input type="text" v-on:keyup.space.enter="myAlert">
+  </div>
+
+  <script>
+    new Vue({
+        el: '#app',
+        data: {
+          number: 0,
+          x: 0,
+          y: 0
+        },
+        methods: {
+          countUp: function(times) {
+            this.number += 1 * times;
+          },
+          changeMP: function(divide, event) {
+            this.x = event.clientX / divide;
+            this.y = event.clientY / divide;
+          },
+          myAlert: function() {
+            alert('アラート');
+          },
+          lessThanMethod: function() {
+            return this.number > 3 ? '３より大きい' : '３以下'
+          }
+        },
+        computed: {
+          lessThan: function() {
+            return this.number > 3 ? '３より大きい' : '３以下'
+          }
+        }
+      })
+  </script>
+</body>
+</html>

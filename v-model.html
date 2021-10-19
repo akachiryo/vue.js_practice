@@ -10,20 +10,15 @@
   <script src="vue.js"></script>
   
   <div id="app">
-    <p>{{message}}</p>
-    <button v-on:click="reverseMessage">メッセージ反転</button>
+    <input type="text" v-model="message">
+    <h1>{{message}}</h1>
   </div>
 
   <script>
     new Vue({
         el: '#app',
         data: {
-          message: 'HelloWorld!'
-        },
-        methods: {
-          reverseMessage: function () {
-            this.message = this.message.split('').reverse().join('');
-          }
+          message: "こんにちは"
         }
       })
   </script>
