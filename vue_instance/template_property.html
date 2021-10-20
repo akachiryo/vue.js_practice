@@ -21,10 +21,14 @@
     <p>こんいちは{{name}}</p>
   </div>
 
+  <bye></bye>
+
 
   <script>
+
+    
     const vm1 = new Vue({
-        el: '#app',
+    el: '#app',
         data: {
           message: 'インスタンス１'
         }
@@ -37,7 +41,7 @@
         template: '<h1>こんにちは、{{ name }}</h1>'
       }).$mount('#app2')
 
-
+      
       new Vue({
         data: {
           name: 'よしピー'
@@ -47,8 +51,15 @@
         }
       }).$mount('#app3')
 
-      deocument.createElement('div')
 
+      new Vue({
+        el: '.hello',
+        template: '<p>こんにちは</p>'
+      })
+      
+      Vue.component('bye', {
+      template: '<p>こんにちは！</p>'
+      });
   </script>
 </body>
 </html>
