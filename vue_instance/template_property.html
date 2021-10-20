@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+  
+  <div id="app">
+    <p>{{message}}</p>
+  </div>
+
+
+  <div id="app3"></div>
+
+
+  <div id="app2">
+    <p>こんいちは{{name}}</p>
+  </div>
+
+
+  <script>
+    const vm1 = new Vue({
+        el: '#app',
+        data: {
+          message: 'インスタンス１'
+        }
+      })
+
+      new Vue({
+        data: {
+          name: 'よしピー'
+        },
+        template: '<h1>こんにちは、{{ name }}</h1>'
+      }).$mount('#app2')
+
+
+      new Vue({
+        data: {
+          name: 'よしピー'
+        },
+        render: function(createElement) {
+          return createElement('h1', 'こんにちは、' + this.name);
+        }
+      }).$mount('#app3')
+
+      deocument.createElement('div')
+
+  </script>
+</body>
+</html>
