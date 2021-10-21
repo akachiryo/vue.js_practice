@@ -10,56 +10,38 @@
   <script src="../vue.js"></script>
   
   <div id="app">
-    <p>{{message}}</p>
+    <my-component></my-component>
+    <my-component></my-component>
   </div>
-
-
-  <div id="app3"></div>
-
-
-  <div id="app2">
-    <p>こんいちは{{name}}</p>
-  </div>
-
-  <bye></bye>
 
 
   <script>
 
-    
-    const vm1 = new Vue({
-    el: '#app',
-        data: {
-          message: 'インスタンス１'
+    const component = {
+      data: function () {
+        return {
+          number: 12
         }
-      })
+      },
+      template: '<p>いいね{{number}}</p>'
+    }
 
-      new Vue({
-        data: {
-          name: 'よしピー'
-        },
-        template: '<h1>こんにちは、{{ name }}</h1>'
-      }).$mount('#app2')
+    // Vue.component('my-component', {
+    //   data: function() {
+    //     return {
+    //       number: 12
+    //     }
+    //   },
+    //   template: '<p>いいね{{number}}</p>'
+    // })
 
-      
-      new Vue({
-        data: {
-          name: 'よしピー'
-        },
-        render: function(createElement) {
-          return createElement('h1', 'こんにちは、' + this.name);
-        }
-      }).$mount('#app3')
-
-
-      new Vue({
-        el: '.hello',
-        template: '<p>こんにちは</p>'
-      })
-      
-      Vue.component('bye', {
-      template: '<p>こんにちは！</p>'
-      });
+    new Vue({
+      el: '#app',
+      components: {
+        'my-component': component
+      }
+    })
+       
   </script>
 </body>
 </html>
