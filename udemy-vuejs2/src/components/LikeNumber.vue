@@ -1,27 +1,30 @@
 <template>
   <div>
-    <p>いいね({{ number }})</p>
+    <p>いいね({{ number / 2 }}){{ testt }}</p>
     <button @click='increment'>+1</button>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      number: 5
-    };
+  props: {
+    number: {
+      type: Number,
+      required: true,
+      default: function() {
+        return {
+          number: 5
+        }
+      }
+    },
+    testt: {
+      type: String
+    }
   },
   methods: {
     increment() {
-      this.number += 1;
+      this.$emit("my-click", this.number + 1);
     }
   }
 };
 </script>
-
-<style scoped>
-  div {
-    border: 1px solid red;
-  }
-</style>
